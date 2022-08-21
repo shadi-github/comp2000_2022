@@ -66,7 +66,7 @@ You can place each of these three `Actor` objects in grid locations of your choo
 
 # Task 8
 
-Have a close look at your `Cat`, `Dog` and `Mouse` classes.  If they are anything like mine they are _all the same except for the colour they use_.  This repetition is "a bad thing" because if the same thing is done in three different places, we need to remember that updating one requires us to update all three.
+Have a close look at your `Cat`, `Dog` and `Bird` classes.  If they are anything like mine they are _all the same except for the colour they use_.  This repetition is "a bad thing" because if the same thing is done in three different places, we need to remember that updating one requires us to update all three.
 
 Is there a place that you could put all the common parts?
 
