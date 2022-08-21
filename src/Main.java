@@ -5,21 +5,21 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Main extends JFrame {
-    public static void main(String[] args) throws Exception {
-      Main window = new Main();
-      window.run();
-    }
-
     class Canvas extends JPanel {
       Stage stage = new Stage();
       public Canvas() {
-        setPreferredSize(new Dimension(720, 720));
+        setPreferredSize(new Dimension(1024, 720));
       }
 
       @Override
       public void paint(Graphics g) {
         stage.paint(g, getMousePosition());
       }
+    }
+
+    public static void main(String[] args) throws Exception {
+      Main window = new Main();
+      window.run();
     }
 
     private Main() {
