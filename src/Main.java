@@ -6,9 +6,12 @@ import javax.swing.JPanel;
 
 public class Main extends JFrame {
     class Canvas extends JPanel {
-      Stage stage = new Stage();
+      Stage stage;
+
       public Canvas() {
         setPreferredSize(new Dimension(1024, 720));
+        stage = new Stage();
+        stage = StageReader.readStage("data/stage1.rvb");
       }
 
       @Override
