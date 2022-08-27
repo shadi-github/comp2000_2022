@@ -1,4 +1,6 @@
 import java.awt.Dimension;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 import java.awt.Graphics;
 import java.time.Duration;
 import java.time.Instant;
@@ -7,11 +9,12 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 
 public class Main extends JFrame {
-    class Canvas extends JPanel {
+    class Canvas extends JPanel implements MouseListener {
       Stage stage;
 
       public Canvas() {
         setPreferredSize(new Dimension(1024, 720));
+        this.addMouseListener(this);
         stage = StageReader.readStage("data/stage1.rvb");
       }
 
@@ -19,6 +22,23 @@ public class Main extends JFrame {
       public void paint(Graphics g) {
         stage.paint(g, getMousePosition());
       }
+
+      @Override
+      public void mouseClicked(MouseEvent e) {
+        stage.mouseClicked(e.getX(), e.getY());
+      }
+
+      @Override
+      public void mousePressed(MouseEvent e) {}
+
+      @Override
+      public void mouseReleased(MouseEvent e) {}
+
+      @Override
+      public void mouseEntered(MouseEvent e) {}
+
+      @Override
+      public void mouseExited(MouseEvent e) {}
     }
 
     public static void main(String[] args) throws Exception {
