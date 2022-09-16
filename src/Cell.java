@@ -1,30 +1,33 @@
-import java.awt.Color;
+import java.awt.image.BufferedImage;
+import java.util.Optional;
 import java.awt.Graphics;
 import java.awt.Point;
 import java.awt.Rectangle;
+import java.awt.Color;
 
 public class Cell extends Rectangle {
-  static int size = 35;
-  char col;
+  public static int size = 32;
+  int col;
   int row;
+  String desc;
+  BufferedImage img;
   Color color;
-  String description;
 
-  public Cell(char inCol, int inRow, int x, int y) {
-    super(x, y, size, size);
-    col = inCol;
-    row = inRow;
+  public Cell(int c, int r, BufferedImage i) {
+    super(c*size, r*size, size, size);
+    col = c;
+    row = r;
+    img = i;
   }
 
-  public void paint(Graphics g, Point mousePos) {
-    if(contains(mousePos)) {
-      g.setColor(Color.GRAY);
-    } else {
-      g.setColor(color);
+  public void paint(Graphics g, Optional<Item> i, Optional<Actor> a) {
+    g.drawImage(img, x, y, size, size, null);
+    if(i.isPresent()) {
+      i.get().paint(g);
     }
-    g.fillRect(x, y, size, size);
-    g.setColor(Color.BLACK);
-    g.drawRect(x, y, size, size);
+    if(a.isPresent()) {
+      a.get().paint(g);
+    }
   }
 
   @Override
@@ -34,5 +37,13 @@ public class Cell extends Rectangle {
     } else {
       return false;
     }
+  }
+
+  public int leftOfComparison(Cell c) {
+    return Integer.compare(col, c.col);
+  }
+
+  public int aboveComparison(Cell c) {
+    return Integer.compare(row, c.row);
   }
 }

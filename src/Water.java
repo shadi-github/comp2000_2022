@@ -1,10 +1,11 @@
+import java.awt.image.BufferedImage;
 import java.awt.Color;
 
 public class Water extends Surface {
-  public Water(char col, int row, int x, int y) {
-    super(col, row, x, y);
+  public Water(int col, int row, BufferedImage img) {
+    super(col, row, img);
     color = Color.BLUE;
     cost = 100;
-    description = "Water";
+    desc = "Water";
   }
 }

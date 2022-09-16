@@ -1,7 +1,9 @@
+import java.awt.image.BufferedImage;
+
 abstract class Surface extends Cell {
   int cost;
 
-  public Surface(char col, int row, int x, int y) {
-    super(col, row, x, y);
+  public Surface(int col, int row, BufferedImage img) {
+    super(col, row, img);
   }
 }
